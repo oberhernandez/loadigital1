@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>B!LOA</title>
+    <link rel="shortcut icon" href="icons/icon B!.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="icons/bootstrap-icons.css">
+    <script src="js/jquery-3.2.1.js"></script>
+
+    <!--Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="container__header">
+            <div class="container__buttonMenu" id="buttonMenu">
+            <span  class="bi bi-list "></span>
+            <span  class="bi bi-x-circle-fill " style="display:none"></span>
+            </div>
+            <div class="container__arrow-left-short" id="arrow-left-short" style="display:none">
+                <a href="index.html"><span  class="bi bi-arrow-left-short "></span></a>
+            </div>
+            <div class="container__logo">
+            <a href="#"><h1 style="color:white"><i style="color:rgb(182, 0, 0)">B!</i><i>LOA</i> </h1></a>
+            </div>
+            <div class="container__search">
+                <input type="text" id="search" placeholder="Buscar..." class="search">
+                <a href="#"><span class="bi-search" onclick="search()"></span></a>
+                <script>
+                    const search = () =>{
+                        const search = document.querySelector("#search");
+                        const bi_search = document.querySelector(".bi-search");
+                        search.style.display="block";
+                        bi_search.style.display="none";
+                    }
+
+                    $(document).ready(function(){
+                    $("#search").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $(".card__text").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                            });
+                        });
+                    });
+
+                </script>
+             <!--
+                
+                <a href="#"><span class="bi bi-instagram"></span></a>
+                <a href="#"><span class="bi bi-twitter"></span></a>
+             -->   
+            
+            </div>
+        </div>
+    </header>
+    <div class="container__menu">
+        <nav class="main__nav">
+            <ul class="menu" id="menu">
+                <li class="list"><a href="index.html" class="link_1" data-category="all" ><span class="bi bi-check"></span>Inicio</a></li>
+                <li class="list"><a href="#" class="link_1 container__subMenu"><span class="bi bi-check"></span>Peliculas</a>
+                <ul class="subMenu">
+                    <li class="list"><a href="#" class="link hide" data-category="Acción"><span class="bi bi-folder-fill"></span>Acción</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Aventura"><span class="bi bi-folder-fill"></span>Aventura</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Animacion"><span class="bi bi-folder-fill"></span>Animación</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Belicos"><span class="bi bi-folder-fill"></span>Bélicos</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Comedia"><span class="bi bi-folder-fill"></span>Comedia</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Documental"><span class="bi bi-folder-fill"></span>Documental</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Historico"><span class="bi bi-folder-fill"></span>Histórico</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Romance"><span class="bi bi-folder-fill"></span>Romance</a></li>
+                    <li class="list"><a href="#" class="link hide" data-category="Terror"><span class="bi bi-folder-fill"></span>Terror</a></li>
+                </ul>
+                </li>
+                <li class="list"><a href="#" class="link hide" data-category="Series"><span class="bi bi-check"></span>Series</a></li>
+                <li class="list"><a href="#" class="link_1 container__subMenu"><span class="bi bi-check"></span>Contacto</a>
+                    <ul class="subMenu">
+                        <li class="list"><a href="#" class="link_1"><span class="bi bi-whatsapp"></span>Whatsapp</a></li>
+                        <li class="list"><a href="#" class="link_1"><span class="bi bi-envelope"></span>Mail</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <main class="container__principal">
+        <div id="movies" class="container__movies"></div>
+        <div class="contenedor__resumen" id="resumen" ></div><!-- end contenedor__resumen-->
+        <template id="t_movie1"></template><!--end template resumen-->     
+    </main>
+      
+    
+<script src="js/main.js"></script>
+</body>
+</html>
